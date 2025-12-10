@@ -20,11 +20,12 @@ pipeline {
         }
         stage('SonarQube Analysis'){
             steps{
-                withSonarQubeEnv('SonarQube-server') {
+                withSonarQubeEnv('SonarCloud') {
                         sh 'mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=devsecops-project-key \
-                        -Dsonar.host.url=$sonarurl \
-                        -Dsonar.login=$sonarlogin'
+                        -Dsonar.projectKey=DevSecOps-project \
+                        -Dsonar.organization=devsecops-project-key \
+                        -Dsonar.host.url=https://sonarcloud.io \
+                        -Dsonar.login=366a57a7a56bd77b0755f288c626bae1a1df59d8'
                 }
             }
         }
